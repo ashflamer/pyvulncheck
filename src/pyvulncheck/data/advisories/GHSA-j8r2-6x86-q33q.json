@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-j8r2-6x86-q33q",
+  "aliases": ["CVE-2023-32681"],
+  "package": "requests",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "requests.sessions.Session.rebuild_proxies",
+    "requests.sessions.Session.resolve_redirects"
+  ],
+  "notes": "A Proxy-Authorization header set on the initial request leaked to the destination server when a redirect crossed to an HTTPS origin. Only reachable when redirects are followed (the default) and a proxy header is in play. rebuild_proxies is the function the fix changed; resolve_redirects is its only caller and the realistic path from user code.",
+  "reviewed": true,
+  "reviewer_note": "Because resolve_redirects runs inside Session.send, almost any requests call reaches this - a good example of a finding that is genuinely reachable but low impact without a proxy."
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-h75v-3vvj-5mfj",
+  "aliases": [
+    "CVE-2024-34064"
+  ],
+  "package": "jinja2",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "jinja2.filters.do_xmlattr"
+  ],
+  "notes": "Follow-up to CVE-2024-22195. The first fix rejected keys with spaces but still allowed other characters that can terminate an attribute, so xmlattr remained injectable. Same single entry point as the earlier advisory.",
+  "reviewed": true,
+  "reviewer_note": "Symbol confirmed identical to GHSA-h5c8-rqwp-cp95; the fix hardened the same function."
+}

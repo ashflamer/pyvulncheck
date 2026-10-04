@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-8q59-q68h-6hv4",
+  "aliases": [
+    "CVE-2020-14343"
+  ],
+  "package": "pyyaml",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "yaml.load",
+    "yaml.full_load",
+    "yaml.full_load_all",
+    "yaml.loader.FullLoader"
+  ],
+  "notes": "FullLoader could still be driven to execute arbitrary code through python/object/apply style tags. Code that only ever calls yaml.safe_load is unaffected, which is the common case and exactly the distinction a version-range scanner cannot make. Note that safe_load() internally calls load() with SafeLoader, so a naive call-graph walk appears to reach the vulnerable symbol; safe_wrappers records that this entry point is the documented fix, not a path to the bug.",
+  "reviewed": true,
+  "reviewer_note": "safe_load/SafeLoader deliberately excluded from symbols and listed as safe_wrappers instead - they were never affected.",
+  "safe_wrappers": [
+    "yaml.safe_load",
+    "yaml.safe_load_all"
+  ]
+}

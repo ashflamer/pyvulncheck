@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-g4mx-q9vg-27p4",
+  "aliases": ["CVE-2023-43804"],
+  "package": "urllib3",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "urllib3.poolmanager.PoolManager.urlopen",
+    "urllib3.util.retry.Retry"
+  ],
+  "notes": "urllib3 did not strip the Cookie header when following a cross-origin redirect. urllib3 does not set cookies itself, so this is only reachable when the caller sets a Cookie header by hand and allows redirects. The vast majority of urllib3 users - including everyone reaching it transitively through requests - are not affected.",
+  "reviewed": true,
+  "reviewer_note": "Classic transitive-dependency false positive: urllib3 is in every lockfile, this advisory applies to almost no one."
+}

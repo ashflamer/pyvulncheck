@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-v845-jxx5-vc9f",
+  "aliases": ["CVE-2023-25577"],
+  "package": "werkzeug",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "werkzeug.formparser.MultiPartParser.parse",
+    "werkzeug.formparser.FormDataParser.parse_multipart"
+  ],
+  "notes": "Parsing a multipart body with an extremely large number of parts consumed CPU and memory without bound. Reachable from any view that touches request.files or request.form on a multipart request; an API that only accepts JSON never enters the multipart parser.",
+  "reviewed": true
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "id": "GHSA-h5c8-rqwp-cp95",
+  "aliases": ["CVE-2024-22195"],
+  "package": "jinja2",
+  "ecosystem": "PyPI",
+  "symbols": [
+    "jinja2.filters.do_xmlattr"
+  ],
+  "notes": "The xmlattr filter did not reject keys containing spaces, slashes or quotes, so a key taken from untrusted input could inject additional attributes into the rendered tag. Only the xmlattr filter is affected; every other part of Jinja is fine. Reachability therefore means a template actually uses |xmlattr with attacker-influenced keys, or Python code calls do_xmlattr directly.",
+  "fix_commits": [
+    "https://github.com/pallets/jinja/commit/716795349a41d4983a9a4771f7d883c96ea17be7"
+  ],
+  "reviewed": true,
+  "reviewer_note": "Verified against the fix diff: only src/jinja2/filters.py::do_xmlattr gained validation."
+}
